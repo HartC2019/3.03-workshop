@@ -94,8 +94,21 @@ console.log("5.", heal(30, 15, 10));
  * @returns {number} the character's proficiency bonus
  */
 function getProficiencyBonus(level, rank) {
-  // TODO
+  if (rank === "trained") {
+    return level + 2;
+  } else if (rank === "expert") {
+    return level + 4;
+  } else if (rank === "master") {
+    return level + 6;
+  } else if (rank === "legendary") {
+    return level + 8;
+  } else {
+    return 0;
+  }
 }
+
+// test - convert rank into a number, add that to the level = bonus
+console.log("6.", getProficiencyBonus(10, "untrained"));
 
 /**
  * A creature can get a bonus to its armor class (AC) by taking cover.
