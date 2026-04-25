@@ -51,8 +51,12 @@ console.log("3.", doesStrikeHit(10, 11));
  * @returns {boolean} whether the strike is a critical hit
  */
 function doesStrikeCrit(attack, ac) {
-  // TODO
+  return attack > ac + 10;
 }
+
+// test - Add 10 to ac, and if attack is still 10 pts more, read true
+
+console.log("4.", doesStrikeCrit(20, 15));
 
 /**
  * A creature can restore hit points (HP) by healing,
