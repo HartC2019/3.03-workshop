@@ -159,7 +159,7 @@ function getRemainingHp(maxHp, currentHp, damage) {
   }
 }
 
-// test -
+// test - if damage is 2 times maxhp, go to -1 hp. If damage is 0 or below, read 0. If else, show current hp
 console.log("8.", getRemainingHp(10, 5, 2));
 
 /**
@@ -171,8 +171,17 @@ console.log("8.", getRemainingHp(10, 5, 2));
  * @returns {boolean} whether the creature can see
  */
 function canSee(light, vision) {
-  // TODO
+  if (light === "bright") {
+    return true;
+  } else if (light === "dim") {
+    return vision === "low-light" || vision === "dark";
+  } else if (light === "dark") {
+    return vision === "dark";
+  }
 }
+
+// test -
+console.log("9.", canSee("dark", "low-light"));
 
 /**
  * A strike deals damage if it hits, unless the strike is a critical hit,
