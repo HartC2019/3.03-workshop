@@ -146,8 +146,21 @@ console.log("7.", getCoverBonus(true, false));
  * @returns {number} the creature's remaining HP after taking damage
  */
 function getRemainingHp(maxHp, currentHp, damage) {
-  // TODO
+  if (maxHp * 2 <= damage) {
+    return -1;
+  }
+
+  let remaining = currentHp - damage;
+
+  if (remaining <= 0) {
+    return 0;
+  } else {
+    return remaining;
+  }
 }
+
+// test -
+console.log("8.", getRemainingHp(10, 5, 2));
 
 /**
  * All creatures can see in bright light.
