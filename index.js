@@ -6,8 +6,12 @@
  * @returns {boolean} whether the wizard can cast the spell
  */
 function canCastSpell(isSpellPrepared, hasScroll) {
-  // TODO
+  return isSpellPrepared || hasScroll;
 }
+
+// test-- as long as one value is true = true
+
+console.log("1.", canCastSpell(false, true));
 
 /**
  * A creature is hidden from an observer if it is actively hiding
@@ -17,8 +21,12 @@ function canCastSpell(isSpellPrepared, hasScroll) {
  * @returns {boolean} whether the creature is hidden from the observer
  */
 function isHidden(hiding, aware) {
-  // TODO
+  return hiding || !aware;
 }
+
+// test-- as long as first value is true OR second value is false, value will be true
+
+console.log("2.", isHidden(false, true));
 
 /**
  * A strike hits if the attack value is greater than or equal
@@ -28,8 +36,12 @@ function isHidden(hiding, aware) {
  * @returns {boolean} whether the strike hits
  */
 function doesStrikeHit(attack, ac) {
-  // TODO
+  return attack >= ac;
 }
+
+// test-- Return true as long as first input is greater than or equal second input
+
+console.log("3.", doesStrikeHit(10, 11));
 
 /**
  * A strike is a critical hit if the attack value is at least
