@@ -67,8 +67,15 @@ console.log("4.", doesStrikeCrit(20, 15));
  * @returns {number} total hit points after healing
  */
 function heal(maxHp, currentHp, healAmount) {
-  // TODO
+  if (healAmount + currentHp > maxHp) {
+    return maxHp;
+  } else {
+    return healAmount + currentHp;
+  }
 }
+
+// test - heal + current hp value cannot go over max hp
+console.log("5.", heal(30, 15, 10));
 
 /**
  * When a character uses a skill they have proficiency in,
