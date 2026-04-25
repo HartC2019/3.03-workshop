@@ -121,8 +121,17 @@ console.log("6.", getProficiencyBonus(10, "untrained"));
  * @returns {number} the cover bonus to AC
  */
 function getCoverBonus(behindObstacle, takingCover) {
-  // TODO
+  if (!behindObstacle) {
+    return 0;
+  } else if (takingCover) {
+    return 4;
+  } else {
+    return 2;
+  }
 }
+
+// test - if behind obstacle, and cover = 4. else if obtacle or cover = 2 and neither = 0.
+console.log("7.", getCoverBonus(true, false));
 
 /**
  * A creature's current hit points (HP) is reduced by taking damage.
