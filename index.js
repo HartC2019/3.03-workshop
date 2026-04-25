@@ -51,7 +51,7 @@ console.log("3.", doesStrikeHit(10, 11));
  * @returns {boolean} whether the strike is a critical hit
  */
 function doesStrikeCrit(attack, ac) {
-  return attack > ac + 10;
+  return attack >= ac + 10;
 }
 
 // test - Add 10 to ac, and if attack is still 10 pts more, read true
@@ -194,5 +194,14 @@ console.log("9.", canSee("dark", "low-light"));
  * @returns {number} damage dealt by the strike
  */
 function getStrikeDamage(attack, ac, damage) {
-  // TODO
+  if (attack >= ac + 10) {
+    return damage * 2;
+  } else if (attack >= ac) {
+    return damage;
+  } else {
+    return 0;
+  }
 }
+
+// test - is it a critical hit? else if is it a hit at all? return damage
+console.log("10.", getStrikeDamage(10, 15, 10));
