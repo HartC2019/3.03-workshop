@@ -6,8 +6,12 @@
  * @returns {boolean} whether the wizard can cast the spell
  */
 function canCastSpell(isSpellPrepared, hasScroll) {
-  // TODO
+  return isSpellPrepared || hasScroll;
 }
+
+// test-- as long as one value is true = true
+
+console.log("1.", canCastSpell(false, true));
 
 /**
  * A creature is hidden from an observer if it is actively hiding
@@ -17,8 +21,12 @@ function canCastSpell(isSpellPrepared, hasScroll) {
  * @returns {boolean} whether the creature is hidden from the observer
  */
 function isHidden(hiding, aware) {
-  // TODO
+  return hiding || !aware;
 }
+
+// test-- as long as first value is true OR second value is false, value will be true
+
+console.log("2.", isHidden(false, true));
 
 /**
  * A strike hits if the attack value is greater than or equal
@@ -28,8 +36,12 @@ function isHidden(hiding, aware) {
  * @returns {boolean} whether the strike hits
  */
 function doesStrikeHit(attack, ac) {
-  // TODO
+  return attack >= ac;
 }
+
+// test-- Return true as long as first input is greater than or equal second input
+
+console.log("3.", doesStrikeHit(10, 11));
 
 /**
  * A strike is a critical hit if the attack value is at least
@@ -39,8 +51,12 @@ function doesStrikeHit(attack, ac) {
  * @returns {boolean} whether the strike is a critical hit
  */
 function doesStrikeCrit(attack, ac) {
-  // TODO
+  return attack >= ac + 10;
 }
+
+// test - Add 10 to ac, and if attack is still 10 pts more, read true
+
+console.log("4.", doesStrikeCrit(20, 15));
 
 /**
  * A creature can restore hit points (HP) by healing,
@@ -51,8 +67,15 @@ function doesStrikeCrit(attack, ac) {
  * @returns {number} total hit points after healing
  */
 function heal(maxHp, currentHp, healAmount) {
-  // TODO
+  if (healAmount + currentHp > maxHp) {
+    return maxHp;
+  } else {
+    return healAmount + currentHp;
+  }
 }
+
+// test - heal + current hp value cannot go over max hp
+console.log("5.", heal(30, 15, 10));
 
 /**
  * When a character uses a skill they have proficiency in,
@@ -71,8 +94,21 @@ function heal(maxHp, currentHp, healAmount) {
  * @returns {number} the character's proficiency bonus
  */
 function getProficiencyBonus(level, rank) {
-  // TODO
+  if (rank === "trained") {
+    return level + 2;
+  } else if (rank === "expert") {
+    return level + 4;
+  } else if (rank === "master") {
+    return level + 6;
+  } else if (rank === "legendary") {
+    return level + 8;
+  } else {
+    return 0;
+  }
 }
+
+// test - convert rank into a number, add that to the level = bonus
+console.log("6.", getProficiencyBonus(10, "untrained"));
 
 /**
  * A creature can get a bonus to its armor class (AC) by taking cover.
@@ -85,8 +121,17 @@ function getProficiencyBonus(level, rank) {
  * @returns {number} the cover bonus to AC
  */
 function getCoverBonus(behindObstacle, takingCover) {
-  // TODO
+  if (!behindObstacle) {
+    return 0;
+  } else if (takingCover) {
+    return 4;
+  } else {
+    return 2;
+  }
 }
+
+// test - if behind obstacle, and cover = 4. else if obtacle or cover = 2 and neither = 0.
+console.log("7.", getCoverBonus(true, false));
 
 /**
  * A creature's current hit points (HP) is reduced by taking damage.
@@ -101,8 +146,21 @@ function getCoverBonus(behindObstacle, takingCover) {
  * @returns {number} the creature's remaining HP after taking damage
  */
 function getRemainingHp(maxHp, currentHp, damage) {
-  // TODO
+  if (maxHp * 2 <= damage) {
+    return -1;
+  }
+
+  let remaining = currentHp - damage;
+
+  if (remaining <= 0) {
+    return 0;
+  } else {
+    return remaining;
+  }
 }
+
+// test - if damage is 2 times maxhp, go to -1 hp. If damage is 0 or below, read 0. If else, show current hp
+console.log("8.", getRemainingHp(10, 5, 2));
 
 /**
  * All creatures can see in bright light.
@@ -113,8 +171,17 @@ function getRemainingHp(maxHp, currentHp, damage) {
  * @returns {boolean} whether the creature can see
  */
 function canSee(light, vision) {
-  // TODO
+  if (light === "bright") {
+    return true;
+  } else if (light === "dim") {
+    return vision === "low-light" || vision === "dark";
+  } else if (light === "dark") {
+    return vision === "dark";
+  }
 }
+
+// test -
+console.log("9.", canSee("dark", "low-light"));
 
 /**
  * A strike deals damage if it hits, unless the strike is a critical hit,
@@ -127,5 +194,14 @@ function canSee(light, vision) {
  * @returns {number} damage dealt by the strike
  */
 function getStrikeDamage(attack, ac, damage) {
-  // TODO
+  if (attack >= ac + 10) {
+    return damage * 2;
+  } else if (attack >= ac) {
+    return damage;
+  } else {
+    return 0;
+  }
 }
+
+// test - is it a critical hit? else if is it a hit at all? return damage
+console.log("10.", getStrikeDamage(10, 15, 10));
